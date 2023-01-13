@@ -10,6 +10,8 @@ import java.util.*;
 public class PreenchedorDeDias {
     private List<Dia> dias;
 
+    // Armazena os inputs de humor de cada dia do ano. Os inputs são números inteiros correspondentes a
+    // a cada humor. Os valores estão disponíveis no enum "Humor".
     public void preencher() {
         LocalDate primeiroDia = LocalDate.of(Dia.ano, Month.JANUARY, 1);
         LocalDate ultimoDia = primeiroDia.plusYears(1).minusDays(1);
@@ -17,6 +19,7 @@ public class PreenchedorDeDias {
 
         dias = new ArrayList<>();
 
+        // Aguarda inputs até o último dia do ano atual
         while (diaAtual.getYear() < (Dia.ano + 1)) {
             Dia atual = new Dia(diaAtual.getDayOfMonth(), diaAtual.getMonth().toString(), diaAtual.getDayOfYear(), diaAtual.getDayOfWeek().toString());
 
@@ -24,6 +27,7 @@ public class PreenchedorDeDias {
 
             int humor = new Scanner(System.in).nextInt();
 
+            // Para corrigir um input errado, basta inserir um número que não corresponda a nenhum humor.
             if (humor < 1 || humor > 8) {
                 try {
                     dias.remove(dias.size() - 1);
@@ -37,6 +41,7 @@ public class PreenchedorDeDias {
                 continue;
             }
 
+            // Busca o humor correspondente ao valor inserido
             for (Humor h : Humor.values()) {
                 if (h.ordinal() + 1 == humor) {
                     atual.setHumor(h);

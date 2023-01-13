@@ -17,7 +17,7 @@ import java.util.List;
 public class GeradorDeCSV {
     public static void main(String[] args) throws IOException, CsvRequiredFieldEmptyException, CsvDataTypeMismatchException {
         PreenchedorDeDias p = new PreenchedorDeDias();
-        p.preencher();
+        p.preencher();  // Inicia preenchimento dos humores
         List<Dia> dias = p.getDias();
 
         // Gerando CSV a partir da lista de dias com OpenCsv
